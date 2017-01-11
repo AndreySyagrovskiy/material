@@ -246,6 +246,7 @@ function MenuProvider($$interimElementProvider) {
        * @returns {!Function} Function to deactivate the interaction listeners.
        */
       function activateInteraction() {
+        console.log(opts);
         if (!opts.menuContentEl[0]) return angular.noop;
 
         // Wire up keyboard listeners.
@@ -286,6 +287,7 @@ function MenuProvider($$interimElementProvider) {
         // ************************************
 
         function onMenuKeyDown(ev) {
+          console.log(ev);
           var handled;
           switch (ev.keyCode) {
             case $mdConstant.KEY_CODE.ESCAPE:
@@ -387,6 +389,11 @@ function MenuProvider($$interimElementProvider) {
       var currentItem = $mdUtil.getClosest(e.target, 'MD-MENU-ITEM');
 
       var items = $mdUtil.nodesToArray(menuEl[0].children);
+      if(items && items[0] && items[0].className.indexOf('md-menu-content-scroll') !== -1)
+      {
+        items = $mdUtil.nodesToArray(items[0].children);
+      }
+
       var currentIndex = items.indexOf(currentItem);
 
       // Traverse through our elements in the specified direction (+/-1) and try to
