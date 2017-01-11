@@ -131,7 +131,6 @@ function MdTabs ($$mdSvgRegistry) {
             '<md-icon md-svg-src="'+ $$mdSvgRegistry.mdTabsArrow +'"></md-icon> ' +
           '</md-next-button> ' +
           '<md-tabs-canvas ' +
-              'tabindex="{{ $mdTabsCtrl.hasFocus ? -1 : 0 }}" ' +
               'aria-activedescendant="{{$mdTabsCtrl.getFocusedTabId()}}" ' +
               'ng-focus="$mdTabsCtrl.redirectFocus()" ' +
               'ng-class="{ ' +
@@ -144,7 +143,7 @@ function MdTabs ($$mdSvgRegistry) {
                 'ng-class="{ \'md-center-tabs\': $mdTabsCtrl.shouldCenterTabs }" ' +
                 'md-tab-scroll="$mdTabsCtrl.scroll($event)"> ' +
               '<md-tab-item ' +
-                  'tabindex="-1" ' +
+                  'tabindex="{{tab.isActive() ? \'0\' : \'-1\'}}" ' + 
                   'class="md-tab" ' +
                   'ng-repeat="tab in $mdTabsCtrl.tabs" ' +
                   'role="tab" ' +
