@@ -389,7 +389,7 @@ function MenuProvider($$interimElementProvider) {
       var currentItem = $mdUtil.getClosest(e.target, 'MD-MENU-ITEM');
 
       var items = $mdUtil.nodesToArray(menuEl[0].children);
-      if(items && items[0] && items[0].className.indexOf('md-menu-content-scroll') !== -1)
+      if(items && items[0] && items[0].tagName.toLowerCase() === 'div')
       {
         items = $mdUtil.nodesToArray(items[0].children);
       }
